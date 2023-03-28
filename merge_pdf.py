@@ -1,9 +1,9 @@
-"""Скрипт объединения файлов PDF""" 
+"""Скрипт объединения файлов PDF.""" 
 import os
 from PyPDF2 import PdfWriter
 
 def merge_pdf(path=None, merged_output='merged_output.pdf'):
-    """Эта функция производит объединение файлов PDF"""
+    """Эта функция производит объединение файлов PDF."""
 
     # Объявили пустой документ.  
     merged_pdf = PdfWriter()
@@ -23,24 +23,30 @@ def merge_pdf(path=None, merged_output='merged_output.pdf'):
 
 # Запрос директории, имени выходного файла.  
 def merge_pdf_in_directory(path=os.getcwd()):
-    """Эта функция запрашивает путь к файлам"""
+    """Эта функция запрашивает путь к файлам."""
 
+    # Вывод пути по умолчанию, запрос у пользователя на продолжение.  
     print(path)
     agreement = input('Is it a right path? y/n/stop:')
     
+    # Проверка ответа пользователя.  
     if agreement == 'n':
+        # Запрос пользовательского пути к файлам.  
         path = input('Write directory of files or skip for merging files in current directory:')
         if path:
             path = path + '\\'
         else:
             path = os.getcwd() + '\\'
+        # Вызов функции с обновленным пользовательским путем к файлам.  
         merge_pdf_in_directory(path)
 
     elif agreement == 'y':
+        # Запрос имени выходного файла.  
         merged_output = input('Name merged file:') + '.pdf'
-        merge_pdf(path, merged_output)
         print('Working on it')
-    
+        # Вызов функции, объединяющей файлы PDF.  
+        merge_pdf(path, merged_output)
+         
     elif agreement == 'stop':
         print('See you again!')
 
