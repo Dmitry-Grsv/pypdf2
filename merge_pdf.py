@@ -10,6 +10,7 @@ def merge_pdf(path=None, merged_output='merged_output.pdf'):
 
     # Формируем список файлов в заданной директории.  
     list_of_pdf = os.listdir(path)
+    #list_of_pdf = sorted(list_of_pdf)
 
     # Цикл чтения файлов из списка, добавление к объявленному документу.  
     for pdf_f in list_of_pdf:
@@ -20,6 +21,7 @@ def merge_pdf(path=None, merged_output='merged_output.pdf'):
     # Запись документа в файл.  
     with open(path+merged_output, 'wb') as output_file:
         merged_pdf.write(output_file)
+    print('Done!')
 
 # Запрос директории, имени выходного файла.  
 def merge_pdf_in_directory(path=os.getcwd()):
